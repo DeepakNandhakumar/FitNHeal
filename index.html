@@ -3,36 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FitNHeal | Health & Fitness Hub</title>
+  <title>FitNHeal | Complete Medical Wellness &amp; Fitness Hub</title>
+  <!-- Google Fonts Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body data-theme="dark">
   <div class="app-container">
-    <!-- LEFT SIDEBAR (25%) -->
-    <aside class="sidebar">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
       <!-- Branding Section -->
       <div class="branding">
         <div class="logo-container">
-          <img src="logo.png" alt="FitNHeal" class="logo pulse">
+          <img src="logo.png" alt="FitNHeal Logo" class="logo pulse">
           <h1 class="brand-name">FitNHeal</h1>
         </div>
-        <p class="slogan">Your path to fitness and wellness!</p>
+        <p class="slogan">Where Medical Science Meets Peak Fitness</p>
         <div class="divider"></div>
       </div>
 
       <!-- Navigation -->
       <nav class="main-nav">
-        <button class="nav-btn active" id="home-btn">
-          <i class="fas fa-home"></i> Home
+        <button class="nav-btn active" id="home-btn" aria-label="Go to Home">
+          <i class="fas fa-home"></i> <span>Home Overview</span>
         </button>
 
         <!-- Mode Toggle -->
         <div class="mode-toggle-container">
           <div class="toggle-labels">
             <span class="medical-label"><i class="fas fa-heartbeat"></i> Medical</span>
-            <label class="switch">
-              <input type="checkbox" id="mode-toggle">
+            <label class="switch" aria-label="Toggle between Medical and Fitness modes">
+              <input type="checkbox" id="mode-toggle" aria-label="Medical or Fitness mode switch">
               <span class="slider round"></span>
             </label>
             <span class="fitness-label"><i class="fas fa-dumbbell"></i> Fitness</span>
@@ -41,212 +46,284 @@
 
         <!-- Dynamic Feature List -->
         <div class="feature-list-container">
-          <h3 class="feature-list-title">Features</h3>
-          <ul class="feature-list" id="feature-list"></ul>
+          <div class="feature-list-header">
+            <h3 class="feature-list-title" id="feature-list-title">Medical Hub</h3>
+            <span class="badge mode-indicator-badge" id="mode-badge">Medical Care</span>
+          </div>
+          <ul class="feature-list" id="feature-list" role="navigation"></ul>
         </div>
+        
         <!-- User Section -->
-<div class="user-section" id="user-section">
-  <div class="guest-view" id="guest-view">
-    <button class="auth-btn signin-signup-btn" id="signin-signup-btn">
-      <i class="fas fa-user-circle"></i> Sign In / Sign Up
-    </button>
-  </div>
-  <div class="member-view hidden" id="member-view">
-    <div class="user-profile">
-      <img src="https://images.icon-icons.com/1378/PNG/512/avatardefault_92824.png" alt="User" class="user-avatar">
-      <span class="username">Basic Member</span>
-      <i class="fas fa-caret-down dropdown-arrow" id="dropdown-arrow"></i>
-    </div>
-    <ul class="dropdown-menu hidden" id="dropdown-menu">
-      <li id="edit-profile-btn"><i class="fas fa-user-edit"></i> Edit Profile</li>
-      <li id="theme-toggle-item"><i class="fas fa-moon"></i> Light Mode</li>
-      <li id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Login/Signup Modal -->
-<div class="modal-overlay" id="auth-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3><i class="fas fa-user-circle" style="margin-right: 10px;"></i>Log In / Sign Up</h3>
-      <button class="close-modal">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="auth-tabs">
-        <button class="auth-tab active" data-tab="login">Log In</button>
-        <button class="auth-tab" data-tab="signup">Sign Up</button>
-      </div>
-      
-      <!-- Login Form -->
-      <form class="auth-form active" id="login-form">
-        <div class="form-group">
-          <label for="email"><i class="fas fa-envelope"></i> Email:</label>
-          <input type="email" id="login-email" placeholder="Enter your email" required>
+        <div class="user-section" id="user-section">
+          <div class="guest-view" id="guest-view">
+            <button class="auth-btn signin-signup-btn" id="signin-signup-btn" aria-label="Sign In or Sign Up">
+              <i class="fas fa-user-circle"></i> Sign In / Sign Up
+            </button>
+          </div>
+          <div class="member-view hidden" id="member-view">
+            <div class="user-profile" id="user-profile-trigger" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="User Profile Menu">
+              <div class="user-meta">
+                <span class="username" id="header-username">Deepak Nandhakumar</span>
+                <span class="user-role-badge"><i class="fas fa-certificate"></i> Verified Pro Member</span>
+              </div>
+              <i class="fas fa-chevron-down dropdown-arrow" id="dropdown-arrow"></i>
+            </div>
+            <ul class="dropdown-menu hidden" id="dropdown-menu" role="menu">
+              <li id="edit-profile-btn" role="menuitem" tabindex="0"><i class="fas fa-user-edit"></i> Edit Profile &amp; Goals</li>
+              <li id="export-report-btn" role="menuitem" tabindex="0"><i class="fas fa-file-medical-alt"></i> Export Health Report</li>
+              <li id="theme-toggle-item" role="menuitem" tabindex="0"><i class="fas fa-sun"></i> Light Mode</li>
+              <li id="logout-btn" role="menuitem" tabindex="0"><i class="fas fa-sign-out-alt"></i> Logout</li>
+            </ul>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="password"><i class="fas fa-lock"></i> Password:</label>
-          <input type="password" id="login-password" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="btn btn-primary login-submit">Log In</button>
-        <div class="auth-footer">
-          <a href="#" class="forgot-password">Forgot password?</a>
-        </div>
-      </form>
-      
-      <!-- Signup Form -->
-      <form class="auth-form" id="signup-form">
-        <div class="form-group">
-          <label for="signup-name"><i class="fas fa-user"></i> Full Name:</label>
-          <input type="text" id="signup-name" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-          <label for="signup-email"><i class="fas fa-envelope"></i> Email:</label>
-          <input type="email" id="signup-email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-          <label for="signup-password"><i class="fas fa-lock"></i> Password:</label>
-          <input type="password" id="signup-password" placeholder="Create a password" required>
-        </div>
-        <div class="form-group">
-          <label for="signup-confirm"><i class="fas fa-lock"></i> Confirm Password:</label>
-          <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
-        </div>
-        <button type="submit" class="btn btn-primary signup-submit">Sign Up</button>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <p>By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
-    </div>
-  </div>
-</div>
-
 
         <!-- Feedback Section -->
         <div class="feedback-section">
-          <h3 class="feedback-title">Share Your Feedback</h3>
+          <h3 class="feedback-title"><i class="fas fa-comment-medical"></i> Member Feedback</h3>
           <form class="feedback-form" id="feedback-form">
             <div class="form-group">
               <label for="feedback-name">Your Name</label>
-              <input type="text" id="feedback-name" placeholder="Enter your name">
+              <input type="text" id="feedback-name" placeholder="Enter your name" required>
             </div>
             <div class="form-group">
-              <label for="feedback-review">Your Review</label>
-              <textarea id="feedback-review" rows="3" placeholder="Share your experience"></textarea>
+              <label for="feedback-review">Your Experience / Suggestions</label>
+              <textarea id="feedback-review" rows="2" placeholder="Tell us how FitNHeal helped you..." required></textarea>
             </div>
             <div class="form-group">
-              <label>Rating</label>
-              <div class="rating-container" id="rating-stars">
-                <i class="fas fa-star rating-star" data-rating="1"></i>
-                <i class="fas fa-star rating-star" data-rating="2"></i>
-                <i class="fas fa-star rating-star" data-rating="3"></i>
-                <i class="fas fa-star rating-star" data-rating="4"></i>
-                <i class="fas fa-star rating-star" data-rating="5"></i>
+              <label id="rating-label">Rating</label>
+              <div class="rating-container" id="rating-stars" role="radiogroup" aria-labelledby="rating-label">
+                <i class="fas fa-star rating-star" data-rating="1" role="radio" aria-checked="false" tabindex="0" aria-label="1 star"></i>
+                <i class="fas fa-star rating-star" data-rating="2" role="radio" aria-checked="false" tabindex="0" aria-label="2 stars"></i>
+                <i class="fas fa-star rating-star" data-rating="3" role="radio" aria-checked="false" tabindex="0" aria-label="3 stars"></i>
+                <i class="fas fa-star rating-star" data-rating="4" role="radio" aria-checked="false" tabindex="0" aria-label="4 stars"></i>
+                <i class="fas fa-star rating-star" data-rating="5" role="radio" aria-checked="false" tabindex="0" aria-label="5 stars"></i>
               </div>
             </div>
-            <button type="submit" class="submit-feedback">Submit Feedback</button>
+            <button type="submit" class="submit-feedback" aria-label="Submit your feedback"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
           </form>
         </div>
       </nav>
-
-      
     </aside>
 
     <!-- MAIN CONTENT (75%) -->
-    <main class="content-area">
-      <!-- Home Content -->
-      <section class="content-section active" id="home-section">
-        <div class="hero">
-          <!-- Animated Title -->
-          <h2 class="hero-title animate-typing">Your All-in-One Health & Fitness Solution</h2>
-          
-          <!-- Tagline with Pulse Animation -->
-          <p class="hero-text pulse-opacity">Where Medical Care Meets Fitness Goals</p>
-          
-          <!-- Stats Grid -->
-          <div class="stats-grid">
-            <div class="stat-card slide-in-left">
-              <i class="fas fa-heartbeat"></i>
-              <h3>8+</h3>
-              <p>Health Areas Covered</p>
+    <main class="content-area" id="main-content-area">
+      
+      <!-- TOP EXECUTIVE BAR -->
+      <header class="top-executive-bar">
+        <div class="greeting-box">
+          <h2 id="top-greeting">Good day, Champion! 🌿</h2>
+          <p id="top-date-display" class="date-text">Loading date...</p>
+        </div>
+        
+        <!-- Live Quick Stats & Actions -->
+        <div class="quick-vitals-strip">
+          <div class="quick-pill water-pill" id="quick-water-btn" title="Click to log 250ml water">
+            <i class="fas fa-tint"></i>
+            <div>
+              <span class="qp-label">Hydration</span>
+              <strong class="qp-val" id="top-water-val">1.75 / 3.0 L</strong>
             </div>
-            <div class="stat-card slide-in-bottom">
-              <i class="fas fa-dumbbell"></i>
-              <h3>50+</h3>
-              <p>Workout Plans</p>
-            </div>
-            <div class="stat-card slide-in-right">
-              <i class="fas fa-utensils"></i>
-              <h3>100+</h3>
-              <p>Healthy Recipes</p>
+            <span class="qp-add">+250ml</span>
+          </div>
+
+          <div class="quick-pill streak-pill" title="Current Daily Streak">
+            <i class="fas fa-fire-alt"></i>
+            <div>
+              <span class="qp-label">Streak</span>
+              <strong class="qp-val" id="top-streak-val">5 Days 🔥</strong>
             </div>
           </div>
 
-          <!-- Feature Showcase -->
-          <div class="feature-showcase">
-            <!-- Medical Card (Floating Animation) -->
-            <div class="feature-card float-animation medical-card">
-              <div class="card-icon">
-                <i class="fas fa-stethoscope"></i>
-              </div>
-              <h3>Medical Wellness</h3>
-              <ul>
-                <li><i class="fas fa-check-circle"></i> Eye care exercises</li>
-                <li><i class="fas fa-check-circle"></i> Stress reduction techniques</li>
-                <li><i class="fas fa-check-circle"></i> Sleep improvement guides</li>
-              </ul>
-            </div>
-
-            <!-- Fitness Card (Floating Animation Delayed) -->
-            <div class="feature-card float-animation-delay fitness-card">
-              <div class="card-icon">
-                <i class="fas fa-running"></i>
-              </div>
-              <h3>Fitness Training</h3>
-              <ul>
-                <li><i class="fas fa-check-circle"></i> Personalized workouts</li>
-                <li><i class="fas fa-check-circle"></i> Diet plans</li>
-                <li><i class="fas fa-check-circle"></i> Progress tracking</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Animated CTA Button -->
-<div class="cta-container">
-    <button class="cta-btn" id="start-journey-btn">
-        Start Your Journey Today <i class="fas fa-arrow-right arrow-bounce"></i>
-    </button>
-</div>
-
-          <!-- Testimonial Carousel -->
-          <div class="testimonial-carousel">
-            <div class="testimonial active">
-              <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D" alt="User" class="user-avatar">
-              <p>"FitNHeal helped me reduce eye strain from 10 hours of daily screen time!"</p>
-              <div class="rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
+          <div class="quick-pill breathe-pill" id="quick-breathe-btn" title="Launch 2-min Stress Relief Breathing">
+            <i class="fas fa-lungs"></i>
+            <div>
+              <span class="qp-label">Quick Calm</span>
+              <strong class="qp-val">2-Min Breath</strong>
             </div>
           </div>
         </div>
+      </header>
+
+      <!-- SEARCH BAR -->
+      <div class="universal-search-container">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="universal-search" placeholder="Search exercises, recipes, symptom guides, first aid, diets..." aria-label="Search content">
+          <button class="clear-search-btn hidden" id="clear-search-btn" aria-label="Clear search"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="search-results-dropdown hidden" id="search-results-dropdown"></div>
+      </div>
+
+      <!-- HOME CONTENT SECTION -->
+      <section class="content-section active" id="home-section">
+        <div class="hero">
+          
+          <!-- Hero Banner with Project Name & Logo -->
+          <div class="hero-banner">
+            <div class="hero-text-content">
+              <div class="landing-brand-showcase">
+                <div class="landing-logo-box">
+                  <img src="logo.png" alt="FitNHeal Logo" class="landing-hero-logo pulse">
+                </div>
+                <div class="landing-brand-meta">
+                  <div class="landing-brand-row">
+                    <h1 class="landing-project-title">FitNHeal</h1>
+                    <span class="hero-badge"><i class="fas fa-shield-virus"></i> Clinical Wellness &amp; Strength Hub</span>
+                  </div>
+                  <p class="landing-project-tagline">Where Medical Science Meets Peak Athletic Fitness</p>
+                </div>
+              </div>
+
+              <h2 class="hero-title">Your All-in-One Health, Healing &amp; Fitness Solution</h2>
+              <p class="hero-text">From daily clinical symptom triage, blood pressure &amp; medication logs, to intelligent AI workout generation and macro-nutrient tracking — all in one unified workspace.</p>
+              
+              <div class="hero-actions">
+                <button class="cta-btn primary-cta" id="start-journey-btn" aria-label="Open Fitness Dashboard">
+                  <i class="fas fa-bolt"></i> Launch Fitness Dashboard
+                </button>
+                <button class="cta-btn secondary-cta" id="explore-medical-btn" aria-label="Explore Medical Tools">
+                  <i class="fas fa-heartbeat"></i> Explore Medical Care
+                </button>
+              </div>
+            </div>
+
+            <div class="hero-highlights-card">
+              <div class="highlight-item">
+                <div class="h-icon medical"><i class="fas fa-stethoscope"></i></div>
+                <div>
+                  <h4>Clinical Health Loggers</h4>
+                  <p>BP, Blood Glucose, SpO2, and medication pill schedules with instant alerts.</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="h-icon fitness"><i class="fas fa-dumbbell"></i></div>
+                <div>
+                  <h4>Smart Workout Generator</h4>
+                  <p>Custom routines based on muscle group, available equipment, and goal.</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="h-icon nutrition"><i class="fas fa-apple-alt"></i></div>
+                <div>
+                  <h4>Macro &amp; Meal Explorer</h4>
+                  <p>50+ verified healthy meals, food nutrition database, and TDEE calculator.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Hub Cards -->
+          <div class="quick-hub-grid">
+            <div class="hub-card" data-action="symptom-checker">
+              <div class="hub-icon red"><i class="fas fa-user-md"></i></div>
+              <h3>Symptom Advisor</h3>
+              <p>Check symptoms, self-care steps &amp; red-flag alerts.</p>
+              <span class="hub-link">Check Now <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="hub-card" data-action="workout-gen">
+              <div class="hub-icon orange"><i class="fas fa-fire"></i></div>
+              <h3>Workout Generator</h3>
+              <p>Build custom targeted workouts in 1 click.</p>
+              <span class="hub-link">Generate <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="hub-card" data-action="macro-calc">
+              <div class="hub-icon green"><i class="fas fa-calculator"></i></div>
+              <h3>TDEE &amp; Macro Calc</h3>
+              <p>Find your exact calories, protein &amp; carb targets.</p>
+              <span class="hub-link">Calculate <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="hub-card" data-action="first-aid">
+              <div class="hub-icon blue"><i class="fas fa-kit-medical"></i></div>
+              <h3>First Aid &amp; CPR</h3>
+              <p>Life-saving protocols with interactive CPR metronome.</p>
+              <span class="hub-link">Open Guide <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <i class="fas fa-heartbeat"></i>
+              <h3>12+</h3>
+              <p>Clinical Health Modules</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-dumbbell"></i>
+              <h3>60+</h3>
+              <p>Curated Workouts &amp; Form Cues</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-utensils"></i>
+              <h3>100+</h3>
+              <p>Macro-Verified Foods &amp; Recipes</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-brain"></i>
+              <h3>100%</h3>
+              <p>Local &amp; Secure Privacy</p>
+            </div>
+          </div>
+
+          <!-- Daily Health Quote & Tip of the Day -->
+          <div class="daily-tip-container">
+            <div class="tip-card">
+              <div class="tip-header">
+                <i class="fas fa-lightbulb"></i>
+                <h4>Health &amp; Longevity Tip of the Day</h4>
+              </div>
+              <p id="daily-tip-text">"Walking for just 10 minutes after each meal significantly reduces postprandial glucose spikes and improves insulin sensitivity by up to 25%."</p>
+              <span class="tip-source">— Harvard Health &amp; Sports Science Research</span>
+            </div>
+          </div>
+
+          <!-- Member Testimonial Carousel -->
+          <div class="testimonial-section">
+            <h3 class="section-heading"><i class="fas fa-star" style="color:#f59e0b;"></i> Real Results from FitNHeal Members</h3>
+            <div class="testimonial-carousel">
+              <div class="testimonial active">
+                <div class="testimonial-quote-badge"><i class="fas fa-quote-left"></i></div>
+                <p>"FitNHeal's 20-20-20 timer and posture routines completely cured my chronic digital eye strain and shoulder pain from 9 hours of coding daily!"</p>
+                <div class="testimonial-author">
+                  <div class="author-initials-pill">SK</div>
+                  <div class="author-text">
+                    <strong>Sarah K.</strong>
+                    <span>Senior Software Engineer • Verified Member</span>
+                  </div>
+                </div>
+                <div class="rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
-      <!-- Dynamic Content Section -->
+      <!-- DYNAMIC CONTENT SECTION (For Medical & Fitness Tools) -->
       <section class="content-section" id="dynamic-content"></section>
       
-      <!-- Fitness Dashboard Section -->
+      <!-- FITNESS DASHBOARD SECTION -->
       <section class="content-section" id="fitness-dashboard">
         <div class="dashboard-section active" id="dashboardSection">
           <div class="dashboard-header">
-            <h2>Fitness Dashboard</h2>
+            <div>
+              <h2>Executive Fitness &amp; Health Dashboard</h2>
+              <p class="section-subtext">Real-time biometrics, workout readiness, hydration status, and calorie targets.</p>
+            </div>
+            <div class="dashboard-actions">
+              <button class="btn btn-secondary" id="open-tdee-btn"><i class="fas fa-calculator"></i> Macro Calculator</button>
+              <button class="btn btn-primary" id="open-live-workout-btn"><i class="fas fa-play"></i> Start Live Workout</button>
+            </div>
           </div>
           
           <div class="dashboard-widgets">
+            
             <!-- User Stats Card -->
-            <div class="widget user-stats">
+            <div class="widget user-stats" id="userStatsWidget">
               <div class="widget-header">
-                <h3>My Stats</h3>
-                <button class="edit-btn" id="edit-stats-btn"><i class="fas fa-edit"></i> Edit</button>
+                <h3><i class="fas fa-id-card-alt"></i> Biometrics &amp; BMI</h3>
+                <button class="edit-btn" id="edit-stats-btn" aria-label="Edit personal health statistics"><i class="fas fa-edit"></i> Edit</button>
               </div>
               <div class="widget-body">
                 <div class="stat-item">
@@ -260,9 +337,43 @@
                   <span class="stat-title">Weight</span>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-value" id="displayBMI">24</span>
+                  <span class="stat-value" id="displayBMI">23.5</span>
                   <span class="stat-label">BMI</span>
-                  <span class="stat-title" id="bmiCategory">Normal</span>
+                  <span class="stat-title" id="bmiCategory">Normal weight</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value" id="displayBMR">1,680</span>
+                  <span class="stat-label">kcal</span>
+                  <span class="stat-title">BMR Rate</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hydration Interactive Tracker -->
+            <div class="widget hydration-widget">
+              <div class="widget-header">
+                <h3><i class="fas fa-tint"></i> Daily Hydration Tracker</h3>
+                <span class="hyd-target" id="hyd-target-text">Goal: 3.0 L (12 Glasses)</span>
+              </div>
+              <div class="widget-body">
+                <div class="hydration-display">
+                  <div class="water-bottle-visual">
+                    <div class="water-fill" id="waterFillLevel" style="height: 58%;">
+                      <span class="water-percent-text" id="waterPercentText">58%</span>
+                    </div>
+                  </div>
+                  <div class="hydration-controls">
+                    <div class="hydration-count">
+                      <span class="current-water" id="currentWaterAmount">1.75</span> <span class="water-unit">/ 3.0 Liters</span>
+                    </div>
+                    <div class="water-glass-grid" id="waterGlassGrid">
+                      <!-- 12 interactive glass icons -->
+                    </div>
+                    <div class="water-btn-row">
+                      <button class="btn btn-sm btn-primary" id="add-glass-btn"><i class="fas fa-plus"></i> +250ml Glass</button>
+                      <button class="btn btn-sm btn-secondary" id="reset-water-btn"><i class="fas fa-redo"></i> Reset</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -270,7 +381,8 @@
             <!-- Today's Workout -->
             <div class="widget today-workout">
               <div class="widget-header">
-                <h3>Recommended Workout</h3>
+                <h3><i class="fas fa-dumbbell"></i> Recommended Today's Workout</h3>
+                <span class="badge" id="workout-level-badge">Intermediate</span>
               </div>
               <div class="widget-body">
                 <div class="workout-item">
@@ -278,83 +390,107 @@
                     <i class="fas fa-running"></i>
                   </div>
                   <div class="workout-details">
-                    <h4 id="recommendedWorkout">Cardio Blast</h4>
-                    <p id="workoutDetails">30 min | <span id="caloriesEstimate">350</span> kcal</p>
+                    <h4 id="recommendedWorkout">Full-Body High Metabolic Conditioning</h4>
+                    <p id="workoutDetails">30 min • 4 Circuits • <span id="caloriesEstimate">350</span> kcal burn</p>
+                    <div class="workout-tags">
+                      <span class="w-tag">Squats</span>
+                      <span class="w-tag">Push-ups</span>
+                      <span class="w-tag">Mountain Climbers</span>
+                      <span class="w-tag">Plank</span>
+                    </div>
                   </div>
-                  <button class="start-btn">Start</button>
+                  <button class="start-btn" id="start-recommended-btn" aria-label="Start Recommended Workout"><i class="fas fa-play"></i> Start</button>
                 </div>
               </div>
             </div>
 
-            <!-- Progress Chart -->
+            <!-- Weight Progress Chart -->
             <div class="widget progress-chart">
               <div class="widget-header">
-                <h3>Weight Progress</h3>
+                <h3><i class="fas fa-chart-line"></i> Weight Trend &amp; Target</h3>
                 <div class="time-filter">
-                  <button class="active" data-period="1M">1M</button>
-                  <button data-period="3M">3M</button>
-                  <button data-period="6M">6M</button>
-                  <button data-period="1Y">1Y</button>
+                  <button class="time-filter-btn active" data-period="1M">1M</button>
+                  <button class="time-filter-btn" data-period="3M">3M</button>
+                  <button class="time-filter-btn" data-period="6M">6M</button>
+                  <button class="time-filter-btn" data-period="1Y">1Y</button>
                 </div>
               </div>
               <div class="widget-body">
-                <canvas id="weightChart"></canvas>
+                <div class="chart-wrapper">
+                  <canvas id="weightChart"></canvas>
+                </div>
               </div>
             </div>
 
-            <!-- Health Summary -->
+            <!-- Health Summary / Macros -->
             <div class="widget activity-summary">
               <div class="widget-header">
-                <h3>Health Summary</h3>
+                <h3><i class="fas fa-heartbeat"></i> Daily Target Summary</h3>
               </div>
               <div class="widget-body">
                 <div class="activity-item">
-                  <div class="activity-icon">
+                  <div class="activity-icon calorie-icon">
                     <i class="fas fa-fire"></i>
                   </div>
                   <div class="activity-details">
-                    <h4>Daily Calories</h4>
-                    <p id="dailyCalories">2,100 kcal</p>
+                    <h4>Daily Calorie Target</h4>
+                    <p id="dailyCalories">2,100 kcal / 2,300 kcal</p>
                   </div>
                   <div class="activity-progress">
-                    <div class="progress-bar" style="width: 65%"></div>
+                    <div class="progress-bar" style="width: 78%"></div>
                   </div>
                 </div>
                 <div class="activity-item">
-                  <div class="activity-icon">
-                    <i class="fas fa-weight"></i>
+                  <div class="activity-icon protein-icon">
+                    <i class="fas fa-drumstick-bite"></i>
                   </div>
                   <div class="activity-details">
-                    <h4>Target Weight</h4>
-                    <p id="targetWeight">68 kg</p>
-                  </div>
-                  <div class="activity-progress">
-                    <div class="progress-bar" style="width: 45%"></div>
-                  </div>
-                </div>
-                <div class="activity-item">
-                  <div class="activity-icon">
-                    <i class="fas fa-heartbeat"></i>
-                  </div>
-                  <div class="activity-details">
-                    <h4>Heart Rate</h4>
-                    <p id="heartRate">72 bpm</p>
+                    <h4>Daily Protein</h4>
+                    <p id="targetWeight">135g / 150g (90%)</p>
                   </div>
                   <div class="activity-progress">
                     <div class="progress-bar" style="width: 90%"></div>
                   </div>
                 </div>
+                <div class="activity-item">
+                  <div class="activity-icon heart-icon">
+                    <i class="fas fa-heartbeat"></i>
+                  </div>
+                  <div class="activity-details">
+                    <h4>Resting Heart Rate</h4>
+                    <p id="heartRate">68 bpm (Optimal)</p>
+                  </div>
+                  <div class="activity-progress">
+                    <div class="progress-bar" style="width: 85%"></div>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
         
         <!-- Workouts Section -->
         <div class="dashboard-section" id="workoutsSection" style="display: none;">
           <div class="workouts-container">
-            <h2>Your Workout Plans</h2>
+            <div class="section-header-bar">
+              <div>
+                <h2>Custom Workout Library &amp; Plans</h2>
+                <p>Curated training regimens for muscle hypertrophy, fat loss, athletic power, and mobility.</p>
+              </div>
+              <button class="btn btn-primary" id="open-gen-from-workouts-btn"><i class="fas fa-magic"></i> AI Workout Generator</button>
+            </div>
+            
+            <div class="workout-filter-pills" id="workout-filter-pills">
+              <button class="filter-pill active" data-filter="all">All Plans</button>
+              <button class="filter-pill" data-filter="Strength">Strength &amp; Muscle</button>
+              <button class="filter-pill" data-filter="Cardio">Cardio &amp; Fat Loss</button>
+              <button class="filter-pill" data-filter="Mobility">Yoga &amp; Flexibility</button>
+              <button class="filter-pill" data-filter="Home">Home Bodyweight</button>
+            </div>
+
             <div class="workout-cards" id="workoutCards">
-              <!-- Workout cards will be generated here -->
+              <!-- Workout cards dynamically rendered -->
             </div>
           </div>
         </div>
@@ -362,14 +498,24 @@
         <!-- Progress Section -->
         <div class="dashboard-section" id="progressSection" style="display: none;">
           <div class="progress-container">
+            <div class="section-header-bar">
+              <div>
+                <h2>Long-Term Health &amp; Activity Analytics</h2>
+                <p>Monitor your progressive overload, weight milestones, and active workout minutes.</p>
+              </div>
+            </div>
             <div class="progress-charts">
               <div class="chart-container">
-                <h3>Weight Trend</h3>
-                <canvas id="progressWeightChart"></canvas>
+                <h3><i class="fas fa-weight"></i> 12-Month Weight Trend (kg)</h3>
+                <div class="chart-wrapper">
+                  <canvas id="progressWeightChart"></canvas>
+                </div>
               </div>
               <div class="chart-container">
-                <h3>Activity Level</h3>
-                <canvas id="activityChart"></canvas>
+                <h3><i class="fas fa-running"></i> Weekly Active Minutes</h3>
+                <div class="chart-wrapper">
+                  <canvas id="activityChart"></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -378,33 +524,112 @@
         <!-- Nutrition Section -->
         <div class="dashboard-section" id="nutritionSection" style="display: none;">
           <div class="nutrition-container">
-            <h2>Nutrition Planner</h2>
+            <div class="section-header-bar">
+              <div>
+                <h2>Macro-Nutrient &amp; Diet Guide</h2>
+                <p>Personalized macronutrient splits, food database explorer, and healthy recipes.</p>
+              </div>
+            </div>
             <div class="nutrition-summary">
               <div class="nutrition-card">
-                <h3>Daily Macros</h3>
+                <h3><i class="fas fa-pie-chart"></i> Daily Target Macronutrient Breakdown</h3>
                 <div class="macros-grid" id="macrosGrid">
-                  <!-- Macro data will be generated here -->
+                  <!-- Macro data generated dynamically -->
                 </div>
               </div>
             </div>
+
+            <!-- Food Explorer -->
+            <div class="food-explorer-widget">
+              <h3><i class="fas fa-search"></i> Food Nutrition &amp; Calorie Explorer</h3>
+              <p>Search any food to view calories, protein, carbs, and fat per standard serving.</p>
+              <div class="food-search-row">
+                <input type="text" id="food-search-input" placeholder="Search foods e.g. Chicken breast, Oats, Paneer, Rice, Eggs, Almonds...">
+                <div class="food-filter-pills">
+                  <button class="f-pill active" data-fcategory="all">All</button>
+                  <button class="f-pill" data-fcategory="protein">High Protein</button>
+                  <button class="f-pill" data-fcategory="carbs">Complex Carbs</button>
+                  <button class="f-pill" data-fcategory="fats">Healthy Fats</button>
+                  <button class="f-pill" data-fcategory="indian">Indian Foods</button>
+                </div>
+              </div>
+              <div class="food-results-grid" id="food-results-grid"></div>
+            </div>
+
           </div>
         </div>
       </section>
+
     </main>
   </div>
   
-
-  <!-- Edit Profile Modal -->
-  <div class="modal-overlay" id="edit-profile-modal">
-    <div class="modal">
+  <!-- AUTH MODAL (Login / Signup) -->
+  <div class="modal-overlay" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="modal auth-modal-box">
       <div class="modal-header">
-        <h3>Edit Profile</h3>
-        <button class="close-modal" id="close-modal">&times;</button>
+        <h3 id="auth-modal-title"><i class="fas fa-user-circle"></i> Member Access</h3>
+        <button class="close-modal" id="close-auth-modal" aria-label="Close authentication modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" data-tab="login" role="tab" aria-selected="true" aria-controls="login-form">Log In</button>
+          <button class="auth-tab" data-tab="signup" role="tab" aria-selected="false" aria-controls="signup-form">Create Account</button>
+        </div>
+        
+        <!-- Login Form -->
+        <form class="auth-form active" id="login-form" role="tabpanel">
+          <div class="form-group">
+            <label for="login-email"><i class="fas fa-envelope"></i> Email Address:</label>
+            <input type="email" id="login-email" placeholder="e.g. member@fitnheal.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="login-password"><i class="fas fa-lock"></i> Password:</label>
+            <input type="password" id="login-password" placeholder="Enter any password for prototype" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary login-submit" aria-label="Log in to account"><i class="fas fa-sign-in-alt"></i> Log In</button>
+          <div class="auth-footer">
+            <a href="#" class="forgot-password" id="forgot-password-link">Forgot password?</a>
+          </div>
+        </form>
+        
+        <!-- Signup Form -->
+        <form class="auth-form" id="signup-form" role="tabpanel">
+          <div class="form-group">
+            <label for="signup-name"><i class="fas fa-user"></i> Full Name:</label>
+            <input type="text" id="signup-name" placeholder="e.g. Deepak Nandhakumar" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="signup-email"><i class="fas fa-envelope"></i> Email Address:</label>
+            <input type="email" id="signup-email" placeholder="e.g. deepak@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="signup-password"><i class="fas fa-lock"></i> Password:</label>
+            <input type="password" id="signup-password" placeholder="Create password (min 6 characters)" minlength="6" required autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label for="signup-confirm"><i class="fas fa-lock"></i> Confirm Password:</label>
+            <input type="password" id="signup-confirm" placeholder="Confirm your password" minlength="6" required autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn btn-primary signup-submit" aria-label="Create new account"><i class="fas fa-user-plus"></i> Create FitNHeal Account</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p><small><i class="fas fa-shield-alt"></i> 100% Privacy Protected: User metrics and logs are stored privately in your browser storage.</small></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div class="modal-overlay" id="edit-profile-modal" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title">
+    <div class="modal profile-modal-box">
+      <div class="modal-header">
+        <h3 id="edit-profile-title"><i class="fas fa-user-cog"></i> Edit Profile &amp; Biometrics</h3>
+        <button class="close-modal" id="close-profile-modal" aria-label="Close profile modal">&times;</button>
       </div>
       <form id="profile-form">
         <div class="form-group">
           <label for="profile-name">Full Name</label>
-          <input type="text" id="profile-name" placeholder="Enter your full name">
+          <input type="text" id="profile-name" placeholder="Enter your full name" required>
         </div>
         <div class="form-group">
           <label for="profile-email">Email</label>
@@ -412,8 +637,8 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="profile-age">Age</label>
-            <input type="number" id="profile-age" placeholder="Enter your age">
+            <label for="profile-age">Age (years)</label>
+            <input type="number" id="profile-age" min="1" max="120" placeholder="e.g. 28">
           </div>
           <div class="form-group">
             <label for="profile-gender">Gender</label>
@@ -421,101 +646,234 @@
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
+              <option value="prefer-not-to-say">Prefer not to say</option>
             </select>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="editHeight">Height (cm)</label>
-            <input type="number" id="editHeight" placeholder="Enter height">
+            <input type="number" id="editHeight" min="50" max="250" step="0.1" placeholder="e.g. 175" required>
           </div>
-        <div class="form-group">
+          <div class="form-group">
             <label for="editWeight">Weight (kg)</label>
-            <input type="number" id="editWeight" placeholder="Enter weight">
+            <input type="number" id="editWeight" min="20" max="300" step="0.1" placeholder="e.g. 72" required>
+          </div>
         </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="profile-activity">Activity Level</label>
+            <select id="profile-activity">
+              <option value="1.2">Sedentary (Desk job, little exercise)</option>
+              <option value="1.375" selected>Light Active (1-3 days/week)</option>
+              <option value="1.55">Moderate Active (3-5 days/week)</option>
+              <option value="1.725">Very Active (6-7 days heavy training)</option>
+              <option value="1.9">Athlete / Heavy Physical Labor</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="profile-goal">Primary Fitness Goal</label>
+            <select id="profile-goal">
+              <option value="weight-loss">Weight Loss (Caloric Deficit -500 kcal)</option>
+              <option value="muscle-gain">Muscle Hypertrophy (Surplus +300 kcal)</option>
+              <option value="maintenance" selected>Weight Maintenance</option>
+              <option value="endurance">Endurance &amp; Stamina</option>
+              <option value="general-wellness">General Health &amp; Longevity</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="profile-goal">Fitness Goal</label>
-          <select id="profile-goal">
-            <option value="weight-loss">Weight Loss</option>
-            <option value="muscle-gain">Muscle Gain</option>
-            <option value="maintenance">Maintenance</option>
-            <option value="endurance">Endurance</option>
-          </select>
-        </div>
+        <div id="profile-form-error" class="form-error-msg hidden"></div>
         <div class="form-actions">
           <button type="button" class="btn btn-secondary" id="cancel-edit">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="submit" class="btn btn-primary" id="save-profile-btn"><i class="fas fa-save"></i> Save Changes</button>
         </div>
       </form>
     </div>
   </div>
-  <!-- AI Chatbot -->
-<div class="ai-chatbot">
-  <div class="chatbot-header">
-    <h4>FitNHeal Assistant</h4>
-    <button class="close-chatbot">&times;</button>
-  </div>
-  <div class="chatbot-messages" id="chatbot-messages"></div>
-  <div class="chatbot-input">
-    <input type="text" id="chatbot-input" placeholder="Ask me anything about health/fitness...">
-    <button id="send-message"><i class="fas fa-paper-plane"></i></button>
-  </div>
-</div>
-<button class="chatbot-toggle">
-  <i class="fas fa-robot"></i>
-</button>
 
-<!-- Workout Timer Modal -->
-<div class="modal-overlay" id="timer-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>Workout Timer</h3>
-      <button class="close-modal" id="close-timer-modal">&times;</button>
-    </div>
-    <div class="timer-container">
-      <div class="timer-display" id="timer-display">00:00</div>
-      <div class="timer-controls">
-        <button id="start-timer">Start</button>
-        <button id="pause-timer">Pause</button>
-        <button id="reset-timer">Reset</button>
+  <!-- WORKOUT TIMER MODAL -->
+  <div class="modal-overlay" id="timer-modal" role="dialog" aria-modal="true" aria-labelledby="timer-modal-title">
+    <div class="modal timer-modal-box">
+      <div class="modal-header">
+        <h3 id="timer-modal-title"><i class="fas fa-stopwatch"></i> Workout &amp; Rest Timer</h3>
+        <button class="close-modal" id="close-timer-modal" aria-label="Close timer modal">&times;</button>
       </div>
-      <div class="timer-settings">
-        <div class="form-group">
-          <label for="minutes">Minutes</label>
-          <input type="number" id="minutes" min="0" max="60" value="20">
+      <div class="timer-container">
+        <div class="timer-display-ring">
+          <div class="timer-display" id="timer-display">20:00</div>
+          <span class="timer-status-text" id="timer-status-text">Ready to train</span>
         </div>
-        <div class="form-group">
-          <label for="seconds">Seconds</label>
-          <input type="number" id="seconds" min="0" max="59" value="0">
+        <div class="timer-controls">
+          <button id="start-timer" class="btn btn-primary"><i class="fas fa-play"></i> Start</button>
+          <button id="pause-timer" class="btn btn-secondary"><i class="fas fa-pause"></i> Pause</button>
+          <button id="reset-timer" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset</button>
         </div>
-      </div>
-      <div class="preset-timers">
-        <button class="preset" data-minutes="5">5 min</button>
-        <button class="preset" data-minutes="10">10 min</button>
-        <button class="preset" data-minutes="15">15 min</button>
-        <button class="preset" data-minutes="20">20 min</button>
+        <div class="timer-settings">
+          <div class="form-group">
+            <label for="minutes">Minutes</label>
+            <input type="number" id="minutes" min="0" max="180" value="20">
+          </div>
+          <div class="form-group">
+            <label for="seconds">Seconds</label>
+            <input type="number" id="seconds" min="0" max="59" value="0">
+          </div>
+        </div>
+        <div class="preset-timers">
+          <button class="preset" data-minutes="1">1 min Rest</button>
+          <button class="preset" data-minutes="5">5 min Warmup</button>
+          <button class="preset" data-minutes="15">15 min HIIT</button>
+          <button class="preset" data-minutes="20">20 min Routine</button>
+          <button class="preset" data-minutes="30">30 min Full Gym</button>
+          <button class="preset" data-minutes="45">45 min Hypertrophy</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- LIVE WORKOUT INTERACTIVE PLAYER OVERLAY -->
+  <div class="modal-overlay" id="live-workout-modal" role="dialog" aria-modal="true" aria-labelledby="live-workout-title">
+    <div class="modal live-workout-box">
+      <div class="modal-header">
+        <h3 id="live-workout-title"><i class="fas fa-bolt"></i> Live Interval Workout Trainer</h3>
+        <button class="close-modal" id="close-live-workout" aria-label="Close workout player">&times;</button>
+      </div>
+      <div class="live-player-body">
+        <div class="live-exercise-header">
+          <span class="step-indicator" id="live-step-count">Exercise 1 of 6</span>
+          <h2 class="live-exercise-name" id="live-exercise-name">Jumping Jacks</h2>
+          <p class="live-exercise-target" id="live-exercise-target">Cardio &amp; Full Body Warm-up</p>
+        </div>
+
+        <div class="live-timer-ring-container">
+          <div class="live-timer-number" id="live-timer-number">45</div>
+          <span class="live-interval-phase" id="live-interval-phase">WORK INTERVAL</span>
+        </div>
+
+        <div class="live-next-preview">
+          <span>Next Up:</span> <strong id="live-next-name">Bodyweight Squats (45s)</strong>
+        </div>
+
+        <div class="live-player-controls">
+          <button class="btn btn-secondary" id="live-prev-btn"><i class="fas fa-backward"></i> Prev</button>
+          <button class="btn btn-primary btn-lg" id="live-toggle-btn"><i class="fas fa-pause"></i> Pause</button>
+          <button class="btn btn-secondary" id="live-skip-btn"><i class="fas fa-forward"></i> Skip / Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEALTH REPORT EXPORT MODAL -->
+  <div class="modal-overlay" id="health-report-modal" role="dialog" aria-modal="true" aria-labelledby="report-modal-title">
+    <div class="modal report-modal-box">
+      <div class="modal-header">
+        <h3 id="report-modal-title"><i class="fas fa-file-medical-alt"></i> Comprehensive Health &amp; Fitness Report</h3>
+        <button class="close-modal" id="close-report-modal" aria-label="Close report">&times;</button>
+      </div>
+      <div class="report-body" id="printable-report-area">
+        <div class="report-header-banner">
+          <div class="report-brand">
+            <h2>FitNHeal Health Record</h2>
+            <p>Generated on <span id="report-date-str">--</span></p>
+          </div>
+          <div class="report-user-badge">
+            <strong id="report-user-name">Member Name</strong>
+            <span id="report-user-email">member@fitnheal.com</span>
+          </div>
+        </div>
+
+        <div class="report-grid">
+          <div class="report-card">
+            <h4>Biometric Profile</h4>
+            <ul>
+              <li><strong>Height:</strong> <span id="r-height">175</span> cm</li>
+              <li><strong>Weight:</strong> <span id="r-weight">72</span> kg</li>
+              <li><strong>BMI:</strong> <span id="r-bmi">23.5</span> (<span id="r-bmi-cat">Normal</span>)</li>
+              <li><strong>BMR:</strong> <span id="r-bmr">1,680</span> kcal/day</li>
+            </ul>
+          </div>
+          <div class="report-card">
+            <h4>Clinical Targets</h4>
+            <ul>
+              <li><strong>Hydration Goal:</strong> 3.0 Liters/day</li>
+              <li><strong>Calorie Target:</strong> <span id="r-cal-target">2,100</span> kcal</li>
+              <li><strong>Optimal Protein:</strong> <span id="r-protein-target">145g</span>/day</li>
+              <li><strong>Sleep Target:</strong> 7.5 - 9 Hours</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="report-card full-width">
+          <h4>Recent Vitals &amp; Medication Logs</h4>
+          <p id="report-vitals-summary">Latest BP: 120/80 mmHg (Normal) • Fasting Glucose: 92 mg/dL • SpO2: 99%</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="print-report-btn"><i class="fas fa-print"></i> Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI CHATBOT (FitNHeal Assistant 2.0) -->
+  <div class="ai-chatbot" id="ai-chatbot" role="region" aria-label="FitNHeal AI Assistant">
+    <div class="chatbot-header">
+      <div class="chatbot-brand-title">
+        <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+        <div>
+          <h4>FitNHeal AI Coach</h4>
+          <span class="bot-status"><span class="status-dot"></span> Online • Medical &amp; Fitness AI</span>
+        </div>
+      </div>
+      <button class="close-chatbot" aria-label="Close assistant">&times;</button>
+    </div>
+    
+    <!-- Quick prompt chips -->
+    <div class="chatbot-quick-chips">
+      <button class="chip-btn" data-query="Suggest high protein breakfast meals">🍳 High Protein Breakfast</button>
+      <button class="chip-btn" data-query="How to fix eye strain and headache?">👁️ Fix Eye Strain</button>
+      <button class="chip-btn" data-query="Create a 3-day workout split for beginners">💪 3-Day Workout Split</button>
+      <button class="chip-btn" data-query="How to lower high blood pressure naturally?">❤️ Lower Blood Pressure</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbot-messages" aria-live="polite"></div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbot-input" placeholder="Ask about workouts, meal plans, BP, remedies..." aria-label="Chat input query">
+      <button id="send-message" aria-label="Send query"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <small class="chatbot-disclaimer">FitNHeal AI provides evidence-based wellness &amp; fitness guidance. Always consult a physician for emergency clinical concerns.</small>
+  </div>
+  
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FitNHeal AI Assistant">
+    <i class="fas fa-robot"></i>
+    <span class="bot-toggle-label">AI Coach</span>
+  </button>
 
   <!-- GLOBAL FOOTER -->
   <footer class="main-footer">
     <div class="footer-container">
-      <div class="footer-links">
-        <a href="#"><i class="fas fa-info-circle"></i> About</a>
-        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+      <div class="footer-brand">
+        <h4><i class="fas fa-heartbeat"></i> FitNHeal</h4>
+        <p>Holistic health engineering for clinical wellness, preventative care, and athletic progression.</p>
       </div>
-      <p class="copyright">© 2023 FitNHeal. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+      <div class="footer-links">
+        <a href="#" id="footer-about"><i class="fas fa-info-circle"></i> About FitNHeal</a>
+        <a href="#" id="footer-contact"><i class="fas fa-envelope"></i> Clinical Support</a>
+        <a href="#" id="footer-privacy"><i class="fas fa-shield-alt"></i> Privacy &amp; Data Security</a>
+      </div>
+      <div class="footer-social-copy">
+        <p class="copyright">&copy; 2026 FitNHeal Platform. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
   <script src="script.js"></script>
 </body>
