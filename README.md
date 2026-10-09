@@ -1,55 +1,144 @@
-# FitNHeal - Unified Medical Wellness & Peak Fitness Hub
+# FitNHeal — Medical Wellness & Fitness Hub
 
-FitNHeal is a modern, full-featured web application that bridges clinical preventative health with athletic performance and nutrition tracking. Built with high-performance Vanilla JavaScript, CSS Glassmorphism design tokens, and Web Audio API synthesizers.
+> **Live demo:** https://fitnheal.vercel.app  
+> **Source code:** https://github.com/DeepakNandhakumar/FitNHeal
 
----
+FitNHeal is a browser-based wellness and fitness dashboard that brings everyday health tracking, fitness planning, nutrition exploration, and self-care tools into one interface. It is built with HTML, CSS, and vanilla JavaScript, with a responsive dashboard and dark/light theme support.
 
-## 🌟 Key Features & Ecosystem
+## Contents
 
-### 🏥 1. Medical & Wellness Hub
-- **Interactive Symptom Advisor & Body Triage**: Interactive body-part symptom picker (Headache, Digestion/GERD, Lumbar Strain, Eye Strain, Chronic Fatigue, Joint Pain) with immediate clinical action protocols, herbal remedies, and red-flag alerts.
-- **Clinical Vitals & BP Logger**: Track Blood Pressure (Systolic/Diastolic with AHA classification), Blood Glucose (Fasting & Postprandial), Pulse (BPM), and SpO2 (%) with color-coded history logs.
-- **Medication & Daily Supplement Manager**: Add prescription medicines or vitamins (dosage, morning/lunch/night schedule), check off daily doses, and track streaks.
-- **Mind Sanctuary & De-Stress Studio**:
-  - **Visual Breathing Pacer**: Box Breathing (4-4-4-4) & Relaxing (4-7-8) with an animated glowing orb and phase guides.
-  - **Procedural Audio Synthesizers**: 100% Web Audio API procedural sound generators for Gentle Rain (Pink Noise), Ocean Waves, and a 432 Hz Zen Singing Bowl tone.
-- **Circadian Sleep & REM Optimizer**: Calculates 90-minute REM sleep cycles to determine optimal bedtime and wake-up times without sleep inertia.
-- **Emergency First Aid & CPR Metronome**: Interactive 110 BPM CPR compression metronome with visual pulsing heart, Heimlich maneuver guide, burn care, and one-tap emergency numbers (112 / 108 / 911).
-- **Eye Care 20-20-20 Timer**: Active screen break timer with audio chime to prevent digital eye strain, paired with a 3-minute ocular yoga routine.
+- [Live Demo](#live-demo)
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [How It Works](#how-it-works)
+- [Run Locally](#run-locally)
+- [Deployment](#deployment)
+- [Current Scope and Limitations](#current-scope-and-limitations)
+- [Privacy and Health Disclaimer](#privacy-and-health-disclaimer)
+- [Future Improvements](#future-improvements)
 
----
+## Live Demo
 
-### 💪 2. Fitness & Athletic Hub
-- **Executive Biometric Dashboard**: Real-time BMI, BMR (Mifflin-St Jeor), Daily Calorie and Protein target gauges, 12-month weight trends, and active workout minute charts.
-- **Interactive Hydration Tracker**: Log water intake with clickable glass cups (250ml per tap), visual water bottle fill animation, and daily 3.0L goal.
-- **Smart Custom Workout Generator**: Filter by target muscle (Full Body, Chest/Triceps, Back/Biceps, Legs, Abs, HIIT), equipment (Bodyweight, Dumbbells, Commercial Gym), and level -> Generates complete set/rep schemes with form cues.
-- **Live Interval Workout Trainer**: Full-screen interactive interval trainer with 45s Work / 15s Rest cycles, audio countdown beeps (3, 2, 1, GO!), next-up exercise previews, and completion celebration.
-- **Food Calorie & Nutrition Explorer**: Searchable database of 50+ verified foods (proteins, carbs, fats, Indian staples) with calorie and macro breakdowns and a 1-click "Add to Today's Plate" button.
-- **Exercise Video Encyclopedia**: Master key compound lifts (Squat, Deadlift, Bench Press, Mobility) with video tutorials and form cues.
-- **All-in-One Fitness Calculators**: 1-Rep Max (1RM) Brzycki calculator and Target Heart Rate training zones (Fat Burn, Aerobic, Anaerobic, VO2 Max).
-- **30-Day Challenges & Habit Tracker**: Interactive daily habit checklist with streak counters and achievement milestone badges.
+**Try FitNHeal:** https://fitnheal.vercel.app
 
----
+The deployed site is a front-end prototype. Some features use browser-side state and sample content; the project does not currently provide a production backend or verified medical decision-making.
 
-### 🤖 3. AI Health Coach & Executive Tools
-- **FitNHeal AI Assistant 2.0**: Evidence-based workout coach and nutrition guide with quick prompt chips.
-- **Comprehensive Printable Health Report**: One-click printable medical summary card for personal records and doctor consultations.
-- **Universal Search Engine**: Search across exercises, recipes, symptom guides, and emergency tools with real-time dropdown filtering.
-- **Dark & Light Mode**: Seamless theme switcher with persistent local storage.
+## Project Overview
 
----
+FitNHeal combines two main areas:
 
-## 🚀 Running the Project
+- **Medical wellness:** symptom information, personal vitals and medication tracking, first-aid guidance, sleep and eye-care tools, and stress-relief exercises.
+- **Fitness and nutrition:** biometric calculations, hydration tracking, workout planning and timers, food/macronutrient exploration, activity habits, and a printable personal report.
 
-Open `index.html` directly in any modern web browser or serve locally:
+The aim is to make common wellness and fitness utilities accessible from a single dashboard rather than separate tools.
+
+## Features
+
+### Medical and wellness tools
+
+- Symptom guidance for selected common concerns, with self-care suggestions and warning-sign information.
+- Browser-based logging interfaces for blood pressure, blood glucose, pulse, oxygen saturation, and medication schedules.
+- Breathing and relaxation experiences, including visual breathing pacing and generated audio where supported by the browser.
+- Sleep-cycle planning helpers.
+- First-aid information and a CPR metronome-style guide.
+- A 20-20-20 screen-break timer and eye-care routine.
+
+### Fitness and nutrition tools
+
+- Fitness dashboard with height, weight, BMI and BMR calculations.
+- Hydration tracker with daily goal progress.
+- Workout generator with target areas, equipment choices, and fitness-level options.
+- Interval workout interface with work/rest phases.
+- Food search and nutrition information for calories and macronutrients.
+- Calorie, macronutrient, one-repetition-maximum (1RM), and target-heart-rate calculators.
+- Habit and challenge tracking interfaces.
+- Printable health and fitness summary.
+
+### Dashboard and usability
+
+- Medical/Fitness mode switch.
+- Dark and light themes.
+- Search across available wellness, exercise, food, and first-aid content.
+- Sign-in/sign-up interface for prototype demonstration.
+- Profile and goal editing.
+- Feedback form and FitNHeal wellness/fitness chat interface.
+- Responsive layout for desktop and smaller screens.
+
+> Feature availability and data persistence depend on the current browser-side implementation. Treat health and nutrition values as informational estimates, not diagnoses or personalized medical prescriptions.
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Page structure and accessible interface elements |
+| CSS3 | Layout, responsive styling, themes, and visual effects |
+| Vanilla JavaScript | UI interactions, calculations, timers, and browser-side state |
+| Chart.js | Dashboard charts (loaded from a CDN) |
+| Font Awesome | Interface icons (loaded from a CDN) |
+| Google Fonts | Typography (loaded from Google Fonts) |
+| Vercel | Static website hosting and deployment |
+
+This repository is currently a **static front-end project**. It does not use a Node package manifest as its application runtime and does not currently include a connected API server or database.
+
+## How It Works
+
+1. The browser loads `index.html`.
+2. `style.css` provides the layout, responsive styles, and theme presentation.
+3. `script.js` handles dashboard interactions, calculations, navigation, timers, and other client-side behavior.
+4. Browser storage may be used for selected preferences or prototype data, depending on the feature.
+
+## Run Locally
+
+### Option 1: Open the page
+
+Open `index.html` in a modern browser. Some browser features and external CDN assets may work best when the page is served locally.
+
+### Option 2: Use a local static server
+
+If Node.js is installed, run these commands from the project directory:
+
 ```bash
-# Optional: run with local server
 npx serve .
 ```
 
-### Running Validation Tests
-```bash
-node test_suite.js
-node dom_test.js
-```
-Both test suites validate 100% of DOM IDs, state transitions, security sanitization, and mathematical logic.
+Open the local URL printed by the server.
+
+## Deployment
+
+The project is deployed on Vercel and connected to this GitHub repository.
+
+- **Production site:** https://fitnheal.vercel.app
+- **GitHub repository:** https://github.com/DeepakNandhakumar/FitNHeal
+- **Vercel project dashboard:** https://vercel.com/deepakdeepak01452-3139s-projects/fitnheal
+
+Updates pushed to the configured production branch can trigger a Vercel deployment.
+
+## Current Scope and Limitations
+
+- **Prototype authentication:** the sign-in/sign-up interface is for demonstration and is not a secure account system. Do not use real passwords or sensitive personal information.
+- **No production backend/database:** data is not currently backed by a server-side account system or shared database.
+- **Browser-local data:** clearing browser storage, using another browser, or switching devices may remove or separate locally stored information.
+- **Chat interface:** do not assume the assistant is connected to a live AI model or that its responses are medically validated.
+- **Informational calculations:** BMI, BMR, calorie, macro, and training-zone values are estimates and may not fit every individual.
+- **External assets:** Google Fonts, Font Awesome, and Chart.js are loaded from third-party CDNs and may require an internet connection.
+- **Testing status:** automated and end-to-end test results should be considered unverified unless they are run and documented for the current commit.
+
+## Privacy and Health Disclaimer
+
+FitNHeal is an educational wellness and fitness project, not a medical device or a substitute for professional care. It does not diagnose conditions or replace a qualified clinician. For emergencies, contact local emergency services. Consult a qualified healthcare professional before making treatment, medication, or major exercise changes.
+
+Until secure server-side authentication, access control, and data protection are implemented and reviewed, **do not enter real medical records, sensitive health information, or real account credentials**.
+
+## Future Improvements
+
+- Add a secure backend API, database, and real authentication with password hashing and session/token controls.
+- Replace demo-only sign-in and chatbot behavior with clearly defined, tested services.
+- Add automated functional tests and browser-based end-to-end testing.
+- Improve accessibility, input validation, error handling, and mobile testing.
+- Add clear provenance and review dates for medical content, plus stronger safety guidance for urgent symptoms.
+- Document deployment environment variables and release checks if a backend is introduced.
+
+---
+
+Made as a wellness and fitness web application prototype.
